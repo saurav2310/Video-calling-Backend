@@ -17,8 +17,10 @@
   "description": "",
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "@types/uuid": "^10.0.0",
     "tslint": "^5.20.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "uuid": "^11.1.0"
   },
   "dependencies": {
     "concurrently": "^9.1.2",
