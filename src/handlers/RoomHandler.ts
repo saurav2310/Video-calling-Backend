@@ -5,7 +5,6 @@ const rooms: Record<string, string[]> = {};
 
 const roomHandler = (socket: Socket) => {
 
-
     const createRoom = () => {
         // This is will be our unique room id for multiple connections establishments
         const roomId = UUIDv4();
@@ -21,11 +20,16 @@ const roomHandler = (socket: Socket) => {
         if (rooms[roomId]) {
             console.log("New user has Joined the room: ", roomId, " with peer ID as ", peerId);
             rooms[roomId].push(peerId);
-            socket.join(roomId);
             console.log("added in room", rooms);
+            socket.join(roomId);
+
+            socket.on('ready',()=>{
+                socket.to(roomId).emit('user-joined',{peerId});
+            });
+
             socket.emit("get-users", {
-                roomId,
                 participants: rooms[roomId],
+                roomId,
             });
         }
     };
