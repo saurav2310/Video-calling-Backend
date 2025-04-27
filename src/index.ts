@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
     });
 });
 
-app.get("/turn-credentials", (req:Request, res: Response) => {
+app.get("/turn-credentials", (req: Request, res: Response) => {
     try {
       if (!TURN_SECRET) {
         throw new Error("TURN_SECRET is not configured");
@@ -43,6 +43,7 @@ app.get("/turn-credentials", (req:Request, res: Response) => {
       const hmac = crypto.createHmac("sha1", TURN_SECRET)
                         .update(username)
                         .digest("base64");
+      console.log(req.url);
 
       res.status(200).json({
         iceServers: [{
