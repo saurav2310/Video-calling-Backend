@@ -12,7 +12,7 @@
                 "always"
             ]
         },
-        "eofline":false,
-        "no-unused-variable": false
+        "eofline":false
+        
     }
 }
