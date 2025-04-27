@@ -23,8 +23,8 @@ const roomHandler = (socket: Socket) => {
             console.log("added in room", rooms);
             socket.join(roomId);
 
-            socket.on('ready',()=>{
-                socket.to(roomId).emit('user-joined',{peerId});
+            socket.on("ready", () => {
+                socket.to(roomId).emit("user-joined", {peerId});
             });
 
             socket.emit("get-users", {
